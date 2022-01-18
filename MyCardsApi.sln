@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{BAD72E1A-B633-4EDA-AC6D-F58FF0BF0E06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1027A253-2CE2-4146-B85D-C85076FCD7D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{3E4DE294-4A64-4674-A999-8AA8AC0E0469}"
+	ProjectSection(SolutionItems) = preProject
+		1-Services\Domain\Entities\Message.cs = 1-Services\Domain\Entities\Message.cs
+		1-Services\Domain\Entities\User.cs = 1-Services\Domain\Entities\User.cs
+		1-Services\Domain\Entities\Validation.cs = 1-Services\Domain\Entities\Validation.cs
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCardsApi", "1-Services\MyCardsApi.csproj", "{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1027A253-2CE2-4146-B85D-C85076FCD7D8} = {BAD72E1A-B633-4EDA-AC6D-F58FF0BF0E06}
+		{3E4DE294-4A64-4674-A999-8AA8AC0E0469} = {1027A253-2CE2-4146-B85D-C85076FCD7D8}
+		{68B5918F-D91C-47D1-ACBC-17BBAB13F7E3} = {BAD72E1A-B633-4EDA-AC6D-F58FF0BF0E06}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B61D6DE-1EDE-4DDA-B8EF-F619330CAD1F}
+	EndGlobalSection
+EndGlobal
