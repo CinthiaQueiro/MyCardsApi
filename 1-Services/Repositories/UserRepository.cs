@@ -33,8 +33,14 @@ namespace Data.Repositories
         public async Task<User>  Post(User user)
         {
             using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
-            {
-                string sql = "INSERT INTO [dbo].[User] ([Name], [Email]) VALUES (@Name, @Email); ";
+            {                
+                string sql = @"DECLARE @IdUser int = 0;
+                SELECT @IdUser = Id FROM [user]
+                WHERE NAME = @Name AND EMAIL = @Email
+                IF @IdUser = 0
+                    BEGIN
+                        INSERT INTO[dbo].[User]([Name], [Email]) VALUES(@Name, @Email);
+                    END";
                 var retorno = await conexao.QueryAsync<User>(sql, user);              
             }
 

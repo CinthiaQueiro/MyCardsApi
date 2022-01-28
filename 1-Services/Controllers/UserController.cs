@@ -35,8 +35,7 @@ namespace MyCardsApi.Controllers
         }
 
         [HttpPost]
-        [Route("SaveUser")]
-        public  async Task<string> SaveUser([FromBody] User user)
+        public async Task<string> Post([FromBody] User user)
         {
             var msg = new Message<User>();
             try
