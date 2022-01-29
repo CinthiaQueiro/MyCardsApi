@@ -40,7 +40,9 @@ namespace Data.Repositories
                 IF @IdUser = 0
                     BEGIN
                         INSERT INTO[dbo].[User]([Name], [Email]) VALUES(@Name, @Email);
-                    END";
+                    END
+                 SELECT * FROM [user]
+                 WHERE NAME = @Name AND EMAIL = @Email";
                 var retorno = await conexao.QueryAsync<User>(sql, user);              
             }
 
