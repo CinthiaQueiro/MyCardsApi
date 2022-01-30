@@ -43,10 +43,8 @@ namespace Data.Repositories
                     END
                  SELECT * FROM [user]
                  WHERE NAME = @Name AND EMAIL = @Email";
-                var retorno = await conexao.QueryAsync<User>(sql, user);              
+                return await conexao.QueryFirstAsync<User>(sql, user);              
             }
-
-            return user;
         }
 
     }   
