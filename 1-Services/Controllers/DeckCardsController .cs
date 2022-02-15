@@ -48,5 +48,25 @@ namespace MyCardsApi.Controllers
 
         }
 
+        [HttpPost]
+        [Route("SaveDeck")]
+        public async Task<Message<DeckCard>> SaveDeck(DeckCard deckCard)
+        {
+            var msg = new Message<DeckCard>();
+            try
+            {
+                msg.Data = await _deckCardsRepository.SaveDeck(deckCard);
+                msg.IsSuccess = true;
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                msg.IsSuccess = false;
+                msg.ReturnMessage = ex.Message;
+                return msg;
+            }
+
+        }
+
     }
 }

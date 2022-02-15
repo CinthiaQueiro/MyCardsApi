@@ -8,5 +8,6 @@ namespace Data.Interfaces
     public interface IDeckCardsRepository : IRepositoryBase<DeckCard>
     {
         Task<List<DeckCard>> GetDeckCardsUser(int idUser);
+        Task<DeckCard> SaveDeck(DeckCard deckCard);
     }
 }

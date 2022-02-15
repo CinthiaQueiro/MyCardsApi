@@ -11,5 +11,10 @@ namespace CoreApiClient.Entities
         public User User { get; set; }
         public string Description { get; set; }
 
+        public int Easy { get; set; }
+        public int Medium { get; set; }
+        public int Hard { get; set; }
+            
+
     }
 }
