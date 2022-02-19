@@ -24,12 +24,12 @@ namespace Data.Repositories
         {
             using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {               
-                string sql = @"SELECT[DeckCards].*, COUNT([easy].Id) Easy,COUNT([medium].Id) Medium,COUNT([hard].Id) Hard FROM[DeckCards] WITH(NOLOCK)
+                string sql = @"SELECT [DeckCards].*, COUNT([easy].Id) Easy,COUNT([medium].Id) Medium,COUNT([hard].Id) Hard FROM[DeckCards] WITH(NOLOCK)
                     LEFT JOIN[Card] easy WITH(NOLOCK) ON[easy].IdDeck = [DeckCards].Id AND[easy].IdClassification = 1 AND[easy].DateShow >= GETDATE()
                     LEFT JOIN[Card] medium WITH(NOLOCK) ON[medium].IdDeck = [DeckCards].Id AND[medium].IdClassification = 2 AND[medium].DateShow >= GETDATE()
                     LEFT JOIN[Card] hard WITH(NOLOCK) ON[hard].IdDeck = [DeckCards].Id AND[hard].IdClassification = 3 AND[hard].DateShow >= GETDATE()
                     WHERE IdUser =  @idUser
-                GROUP BY[DeckCards].Id,[DeckCards].IdUser, [DeckCards].Description ";
+                GROUP BY[DeckCards].Id,[DeckCards].IdUser, [DeckCards].Description ORDER BY [DeckCards].Description";
 
                 var retorno = await conexao.QueryAsync<DeckCard>(sql, new{ idUser = idUser});
                 return retorno.ToList();
@@ -45,6 +45,29 @@ namespace Data.Repositories
 
                 var param = new { description = deckCard.Description, user = deckCard.User.Id};
                 deckCard.Id = await conexao.QueryFirstAsync<int>(sql, param);
+                return deckCard;
+            }
+        }
+
+        public async Task<DeckCard> EditDeckCard(DeckCard deckCard)
+        {
+            using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                string sql = @"UPDATE [DeckCards] SET Description= @description WHERE id =  @user";
+
+                var param = new { description = deckCard.Description, user = deckCard.User.Id };
+                await conexao.ExecuteAsync(sql, param);
+                return deckCard;
+            }
+        }
+        public async Task<DeckCard> DeleteDeckCard(DeckCard deckCard)
+        {
+            using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                string sql = @"DELETE FROM [DeckCards] WHERE id = @id";
+
+                var param = new { description = deckCard.Description, id = deckCard.Id };
+                await conexao.ExecuteAsync(sql, param);
                 return deckCard;
             }
         }

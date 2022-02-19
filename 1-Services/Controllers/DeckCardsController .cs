@@ -68,5 +68,45 @@ namespace MyCardsApi.Controllers
 
         }
 
+        [HttpPost]
+        [Route("EditDeckCard")]
+        public async Task<Message<DeckCard>> EditDeckCard(DeckCard deckCard)
+        {
+            var msg = new Message<DeckCard>();
+            try
+            {
+                msg.Data = await _deckCardsRepository.EditDeckCard(deckCard);
+                msg.IsSuccess = true;
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                msg.IsSuccess = false;
+                msg.ReturnMessage = ex.Message;
+                return msg;
+            }
+
+        }
+
+        [HttpPost]
+        [Route("DeleteDeckCard")] 
+        public async Task<Message<DeckCard>> DeleteDeckCard(DeckCard deckCard)
+        {
+            var msg = new Message<DeckCard>();
+            try
+            {
+                msg.Data = await _deckCardsRepository.DeleteDeckCard(deckCard);
+                msg.IsSuccess = true;
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                msg.IsSuccess = false;
+                msg.ReturnMessage = ex.Message;
+                return msg;
+            }
+
+        }
+
     }
 }

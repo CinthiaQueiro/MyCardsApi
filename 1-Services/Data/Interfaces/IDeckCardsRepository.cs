@@ -9,5 +9,10 @@ namespace Data.Interfaces
     {
         Task<List<DeckCard>> GetDeckCardsUser(int idUser);
         Task<DeckCard> SaveDeck(DeckCard deckCard);
+
+        Task<DeckCard> EditDeckCard(DeckCard deckCard);
+
+        Task<DeckCard> DeleteDeckCard(DeckCard deckCard);
+        
     }
 }
