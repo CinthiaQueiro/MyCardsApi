@@ -25,9 +25,9 @@ namespace Data.Repositories
             using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {               
                 string sql = @"SELECT [DeckCards].*, COUNT([easy].Id) Easy,COUNT([medium].Id) Medium,COUNT([hard].Id) Hard FROM[DeckCards] WITH(NOLOCK)
-                    LEFT JOIN[Card] easy WITH(NOLOCK) ON[easy].IdDeck = [DeckCards].Id AND[easy].IdClassification = 1 AND[easy].DateShow >= GETDATE()
-                    LEFT JOIN[Card] medium WITH(NOLOCK) ON[medium].IdDeck = [DeckCards].Id AND[medium].IdClassification = 2 AND[medium].DateShow >= GETDATE()
-                    LEFT JOIN[Card] hard WITH(NOLOCK) ON[hard].IdDeck = [DeckCards].Id AND[hard].IdClassification = 3 AND[hard].DateShow >= GETDATE()
+                    LEFT JOIN[Card] easy WITH(NOLOCK) ON[easy].IdDeck = [DeckCards].Id AND[easy].IdClassification = 1 AND[easy].DateShow <= GETDATE()
+                    LEFT JOIN[Card] medium WITH(NOLOCK) ON[medium].IdDeck = [DeckCards].Id AND[medium].IdClassification = 2 AND[medium].DateShow <= GETDATE()
+                    LEFT JOIN[Card] hard WITH(NOLOCK) ON[hard].IdDeck = [DeckCards].Id AND[hard].IdClassification = 3 AND[hard].DateShow <= GETDATE()
                     WHERE IdUser =  @idUser
                 GROUP BY[DeckCards].Id,[DeckCards].IdUser, [DeckCards].Description ORDER BY [DeckCards].Description";
 

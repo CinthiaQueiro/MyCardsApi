@@ -30,6 +30,7 @@ namespace MyCardsApi
             services.AddControllers();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IDeckCardsRepository, DeckCardsRepository>();
+            services.AddTransient<ICardRepository, CardRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
