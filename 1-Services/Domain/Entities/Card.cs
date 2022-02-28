@@ -1,6 +1,7 @@
 using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.Collections.Generic;
 
 namespace CoreApiClient.Entities
 {
@@ -16,5 +17,6 @@ namespace CoreApiClient.Entities
         public DateTime DateShow { get; set; }
         public int Order { get; set; }
         public int IdClassification { get; set; }
+        public List<Classification> Classification {get; set;}
     }
 }

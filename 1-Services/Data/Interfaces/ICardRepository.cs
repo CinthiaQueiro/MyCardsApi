@@ -8,6 +8,9 @@ namespace Data.Interfaces
     public interface ICardRepository : IRepositoryBase<Card>
     {
         Task<Card> SaveCard(Card card);
-        
+        Task<List<Card>> Get(int idDeckCard);
+
+        Task<Card> UpdateCard(Card card);
+
     }
 }

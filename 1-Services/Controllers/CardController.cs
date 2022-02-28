@@ -47,5 +47,45 @@ namespace MyCardsApi.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Route("GetCards/{idDeckCard}")]
+        public async Task<Message<List<Card>>> GetCards(int idDeckCard)
+        {
+            var msg = new Message<List<Card>>();
+            try
+            {
+                msg.Data = await _cardRepository.Get(idDeckCard);
+                msg.IsSuccess = true;
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                msg.IsSuccess = false;
+                msg.ReturnMessage = ex.Message;
+                return msg;
+            }
+
+        }
+
+        [HttpPost]
+        [Route("UpdateCard")]
+        public async Task<Message<Card>> UpdateCard(Card card)
+        {
+            var msg = new Message<Card>();
+            try
+            {
+                msg.Data = await _cardRepository.UpdateCard(card);
+                msg.IsSuccess = true;
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                msg.IsSuccess = false;
+                msg.ReturnMessage = ex.Message;
+                return msg;
+            }
+
+        }
     }
 }

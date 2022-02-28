@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{3E4DE294-4A64-4674-A999-8AA8AC0E0469}"
 	ProjectSection(SolutionItems) = preProject
 		Card.cs = Card.cs
+		1-Services\Domain\Entities\Classification.cs = 1-Services\Domain\Entities\Classification.cs
 		1-Services\Domain\Entities\DeckCard.cs = 1-Services\Domain\Entities\DeckCard.cs
 		1-Services\Domain\Entities\Message.cs = 1-Services\Domain\Entities\Message.cs
 		1-Services\Domain\Entities\User.cs = 1-Services\Domain\Entities\User.cs
