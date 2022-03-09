@@ -53,9 +53,9 @@ namespace Data.Repositories
         {
             using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                string sql = @"UPDATE [DeckCards] SET Description= @description WHERE id =  @user";
+                string sql = @"UPDATE [DeckCards] SET Description= @description WHERE id =  @id";
 
-                var param = new { description = deckCard.Description, user = deckCard.User.Id };
+                var param = new { description = deckCard.Description, id = deckCard.Id };
                 await conexao.ExecuteAsync(sql, param);
                 return deckCard;
             }
@@ -64,7 +64,7 @@ namespace Data.Repositories
         {
             using (SqlConnection conexao = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                string sql = @"DELETE FROM [DeckCards] WHERE id = @id";
+                string sql = @"DELETE FROM [card] WHERE IdDeck = @id DELETE FROM [DeckCards] WHERE id = @id";
 
                 var param = new { description = deckCard.Description, id = deckCard.Id };
                 await conexao.ExecuteAsync(sql, param);

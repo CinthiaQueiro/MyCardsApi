@@ -36,13 +36,13 @@ namespace Data.Repositories
             {                
                 string sql = @"DECLARE @IdUser int = 0;
                 SELECT @IdUser = Id FROM [user]
-                WHERE NAME = @Name AND EMAIL = @Email
+                WHERE EMAIL = @Email
                 IF @IdUser = 0
                     BEGIN
                         INSERT INTO[dbo].[User]([Name], [Email]) VALUES(@Name, @Email);
                     END
                  SELECT * FROM [user]
-                 WHERE NAME = @Name AND EMAIL = @Email";
+                 WHERE EMAIL = @Email";
                 return await conexao.QueryFirstAsync<User>(sql, user);              
             }
         }
