@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'mycardsstudyapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_61C49513339446A4924F76B05C4B102A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D4B0CC06C03D4DE0A1F6E860D6356C8A }}
           package: .
